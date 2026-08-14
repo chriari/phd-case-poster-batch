@@ -1,6 +1,6 @@
 ---
 name: phd-case-poster-batch
-description: Manually batch-process PhD outreach email, interview invitation, and offer screenshots into 乐意轻学 branded posters. Use only when the user explicitly asks Codex to process images from the Desktop folder 套磁作图-codex or a named test subfolder, classify screenshots as 套磁回复/面试邀请/Offer, select the green/purple/blue template, verify current university rankings, mosaic personal data, preserve each input filename exactly, archive finished posters in a YYYY-MM-DD folder, and remove originals only after successful validation. Do not schedule or monitor automatically.
+description: Manually batch-process PhD outreach email, interview invitation, and offer screenshots into 乐意轻学 branded posters. Use only when the user explicitly asks to process images from a user-specified folder (or a named test subfolder), classify screenshots as 套磁回复/面试邀请/Offer, select the green/purple/blue template, verify current university rankings, mosaic personal data, preserve each input filename exactly, archive finished posters in a YYYY-MM-DD folder, and remove originals only after successful validation. Do not schedule or monitor automatically.
 ---
 
 # 博士案例海报批处理
@@ -9,15 +9,12 @@ Read [references/template-rules.md](references/template-rules.md) completely bef
 
 ## Fixed locations
 
-- Inbox: `/Users/christinayan/Desktop/套磁作图-codex`
+- Inbox: the **user-specified input folder**. Ask the user for the folder path at the start of each run (or reuse the folder from the previous run if unchanged). Never hard-code any specific user's desktop path — this skill may be shared with other colleagues.
 - Run only after the user explicitly asks. Never create a timer, recurring automation, watcher, or background monitor for this workflow.
 - Treat supported image files placed directly in the inbox as unprocessed inputs.
 - If the user explicitly names or approves a test subfolder, treat supported image files directly inside that one subfolder as the current batch inputs.
 - Otherwise ignore `.DS_Store`, hidden files, and all subfolders; dated subfolders are outputs, not inputs.
-- Use assets in `assets/` as style references:
-  - `green-outreach-reply.png`
-  - `blue-offer.jpg`
-  - `purple-interview.jpg`
+- Style source: follow the design spec in [references/template-rules.md](references/template-rules.md) (2026-08 年轻互联网版). The old images in `assets/` are deprecated and NOT to be used as style references.
 
 ## Process each input
 
@@ -35,7 +32,7 @@ Read [references/template-rules.md](references/template-rules.md) completely bef
    - Show the ranking only when the numeric rank is 200 or better. If the rank is greater than 200, or the entire published ranking band begins after 200, show only the Chinese school name.
    - Do not include ranking year, “世界大学排名”, or “第”.
    - For Sino-foreign joint-venture universities, use `中外合办-PHD` as the title region; do not use `中国-PHD`.
-6. Generate a branded poster with the built-in image-generation workflow, using the matching asset as the primary style reference and the source screenshot as content reference.
+6. Generate a branded poster on the Ardot canvas following the layout, color, type, watermark, and mosaic rules in [references/template-rules.md](references/template-rules.md). Use the type/color mapping (green/purple/blue) from the classification. Then export the poster frame as PNG.
 7. Preserve the exact source meaning. Do not invent missing text, dates, interview schedules, admissions, funding, or supervision commitments.
 8. Replace every personal or sensitive value with a subtle gray-white pixelated mosaic strip. Never use placeholder text. Cover student, professor, third-party names, email addresses, phone numbers, IDs, application numbers, account details, signatures, and other identifying data.
    - Also mosaic the student's specific research-proposal topic or exact research direction.
