@@ -1,0 +1,4 @@
+interface:
+  display_name: "博士案例海报批处理"
+  short_description: "自动识别套磁回复、面试邀请和Offer并批量生成品牌海报"
+  default_prompt: "Use $phd-case-poster-batch to process new PhD case screenshots into the correct branded posters."
