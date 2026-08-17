@@ -25,7 +25,7 @@ Before doing anything, briefly explain to the user how this run will work, in pl
 - Treat supported image files placed directly in the inbox as unprocessed inputs.
 - If the user explicitly names or approves a test subfolder, treat supported image files directly inside that one subfolder as the current batch inputs.
 - Otherwise ignore `.DS_Store`, hidden files, and all subfolders; dated subfolders are outputs, not inputs.
-- Style source: follow the design spec in [references/template-rules.md](references/template-rules.md) (2026-08 年轻互联网版). The old images in `assets/` are deprecated and NOT to be used as style references.
+- Style source: follow the design spec in [references/template-rules.md](references/template-rules.md) (2026-08 年轻互联网版). The old template images were removed from the repo.
 - Known Ardot pitfall (IMPORTANT for stable reproduction): creating poster frames by Copying a sample frame can render with stale/wrong content (screenshots/exports show other posters' Hero text) even though node data is correct — observed when two frames' contents appeared swapped. **Stable, reproducible workflow:**
   1. Create a FRESH Ardot design file for each batch (never reuse a file that has shown rendering issues).
   2. Build every poster from scratch with Insert (I) operations only — do NOT Copy the sample frame. Use the exact parameter tables in `references/template-rules.md`.
