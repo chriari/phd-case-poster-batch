@@ -7,6 +7,17 @@ description: Manually batch-process PhD outreach email, interview invitation, an
 
 Read [references/template-rules.md](references/template-rules.md) completely before processing images.
 
+## Usage briefing (MUST tell the user before every run)
+
+Before doing anything, briefly explain to the user how this run will work, in plain language:
+
+1. **Input folder**: ask the user which folder holds the screenshots (or confirm the folder from the previous run).
+2. **Output**: posters are saved inside that folder under a `YYYY-MM-DD` subfolder (today's date), keeping the original filenames exactly.
+3. **Flow**: each screenshot is read and classified (普通回复 → green / 面试邀请 → purple / Offer → blue), the latest QS/USNEWS ranking is verified online, then each poster is built on the Ardot canvas with the approved style and exported as PNG.
+4. **Privacy**: all personal/sensitive info (names, emails, signatures, research topics) is covered with gray mosaic blocks; key sentences are outlined in red. Nothing sensitive is ever shown in the report.
+5. **Original files**: after a poster passes validation, the original screenshot is moved to the Trash (recoverable). If anything fails, the original is left untouched.
+6. **First-time tip**: for a brand-new environment/colleague, recommend running 1-2 test images first to confirm font rendering before batch processing.
+
 ## Fixed locations
 
 - Inbox: the **user-specified input folder**. Ask the user for the folder path at the start of each run (or reuse the folder from the previous run if unchanged). Never hard-code any specific user's desktop path — this skill may be shared with other colleagues.
