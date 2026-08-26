@@ -50,6 +50,8 @@ Before doing anything, briefly explain to the user how this run will work, in pl
    - For Sino-foreign joint-venture universities, use `中外合办-PHD` as the title region; do not use `中国-PHD`.
 6. Generate a branded poster on the Ardot canvas following the layout, color, type, watermark, and mosaic rules in [references/template-rules.md](references/template-rules.md). Use the type/color mapping (green/purple/blue) from the classification. Then export the poster frame as PNG.
 7. Preserve the exact source meaning. Do not invent missing text, dates, interview schedules, admissions, funding, or supervision commitments.
+   - **Keep every meaningful email paragraph by default.** Greetings, thanks, interest expressions, and context sentences MUST stay in the poster (e.g. a "Thank you for your email..." opening goes into Line2 before the highlight box). Only when the text is so long it would overflow the content card may generic filler (pure courtesy phrases without information) be trimmed — never delete meaningful content to make it fit.
+   - 邮件正文有意义的段落默认全部保留:问候/感谢/兴趣表达等要放进正文(如开头"Thank you for your email..."放 Line2)。只有当文字过长放不进卡片时,才可删掉无信息量的客套话;禁止为了排版删掉有意义内容。
 8. Replace every personal or sensitive value with a subtle gray-white pixelated mosaic strip. Never use placeholder text. Cover student, professor, third-party names, email addresses, phone numbers, IDs, application numbers, account details, signatures, and other identifying data.
    - Also mosaic the student's specific research-proposal topic or exact research direction.
    - Mosaic the professor's specific research direction, named theory/model, project, grant, lab, centre, programme, dataset, or distinctive topic. Broad discipline descriptions may remain.
