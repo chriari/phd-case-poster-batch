@@ -1,6 +1,6 @@
 ---
 name: phd-case-poster-batch
-description: Manually batch-process PhD outreach email, interview invitation, and offer screenshots into 乐意轻学 branded posters. Use only when the user explicitly asks to process images from a user-specified folder (or a named test subfolder), classify screenshots as 套磁回复/面试邀请/Offer, select the green/purple/blue template, verify current university rankings, mosaic personal data, preserve each input filename exactly, archive finished posters in a YYYY-MM-DD folder, and remove originals only after successful validation. Do not schedule or monitor automatically.
+description: Manually batch-process PhD outreach email, interview invitation, and offer screenshots into 乐意轻学 branded posters. Use only when the user explicitly asks to process images from a user-specified folder (or a named test subfolder), classify screenshots as 套磁回复/面试邀请/Offer, select the green/purple/blue template, verify current university rankings, mosaic personal data, preserve each input filename exactly, archive finished posters in a YYYY-MM-DD folder, and KEEP the original screenshots in place (never delete or move them). Do not schedule or monitor automatically.
 ---
 
 # 博士案例海报批处理
@@ -15,7 +15,7 @@ Before doing anything, briefly explain to the user how this run will work, in pl
 2. **Output**: posters are saved inside that folder under a `YYYY-MM-DD` subfolder (today's date), keeping the original filenames exactly.
 3. **Flow**: each screenshot is read and classified (普通回复 → green / 面试邀请 → purple / Offer → blue), the latest QS/USNEWS ranking is verified online, then each poster is built on the Ardot canvas with the approved style and exported as PNG.
 4. **Privacy**: all personal/sensitive info (names, emails, signatures, research topics) is covered with gray mosaic blocks; key sentences are outlined in red. Nothing sensitive is ever shown in the report.
-5. **Original files**: after a poster passes validation, the original screenshot is moved to the Trash (recoverable). If anything fails, the original is left untouched.
+5. **Original files are KEPT**: source screenshots are never deleted or moved — they stay in the input folder. Posters are saved separately in the `YYYY-MM-DD` output folder.
 6. **First-time tip**: for a brand-new environment/colleague, recommend running 1-2 test images first to confirm font rendering before batch processing.
 
 ## Fixed locations
@@ -64,11 +64,11 @@ Before doing anything, briefly explain to the user how this run will work, in pl
    - When uncertain whether a detail is identifying, mosaic it.
 9. Add thin red rectangular outlines around the most decision-relevant phrases without covering text.
 
-## Output and deletion transaction
+## Output transaction (originals are KEPT)
 
 1. Create the output folder inside the inbox using the local run date in exact `YYYY-MM-DD` format.
 2. Save the finished poster there with the exact original filename and extension. Encode the image in the file's stated format; do not put PNG bytes in a `.jpg` file.
-3. Before deleting the input, verify all of the following:
+3. Verify all of the following:
    - output exists at the exact destination;
    - output opens successfully and is a portrait poster;
    - correct green, purple, or blue template was used;
@@ -78,9 +78,9 @@ Before doing anything, briefly explain to the user how this run will work, in pl
    - red boxes do not obscure text;
    - output filename exactly matches the input filename;
    - visible source meaning is retained without fabrication.
-4. Delete the original input only after every check passes. Deletion is explicitly authorized only for successfully processed source images in the inbox root or in the one test subfolder explicitly approved for the current run.
-5. If generation, ranking lookup, saving, format conversion, or validation fails, leave the original untouched and report the filename and failure. Never delete on partial success.
-6. If an output with the same filename already exists, do not overwrite it and do not delete the input; report the collision for review.
+4. **NEVER delete or move the original screenshots.** Leave every source image exactly where it is in the inbox. Posters go only into the `YYYY-MM-DD` output folder — originals and posters coexist.
+5. If generation, ranking lookup, saving, format conversion, or validation fails, leave the original untouched and report the filename and failure.
+6. If an output with the same filename already exists, do not overwrite it; report the collision for review.
 
 ## Batch completion report
 
