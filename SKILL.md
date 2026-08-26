@@ -51,7 +51,12 @@ Before doing anything, briefly explain to the user how this run will work, in pl
 6. Generate a branded poster on the Ardot canvas following the layout, color, type, watermark, and mosaic rules in [references/template-rules.md](references/template-rules.md). Use the type/color mapping (green/purple/blue) from the classification. Then export the poster frame as PNG.
 7. Preserve the exact source meaning. Do not invent missing text, dates, interview schedules, admissions, funding, or supervision commitments.
    - **Keep every meaningful email paragraph by default.** Greetings, thanks, interest expressions, and context sentences MUST stay in the poster (e.g. a "Thank you for your email..." opening goes into Line2 before the highlight box). Only when the text is so long it would overflow the content card may generic filler (pure courtesy phrases without information) be trimmed — never delete meaningful content to make it fit.
-   - 邮件正文有意义的段落默认全部保留:问候/感谢/兴趣表达等要放进正文(如开头"Thank you for your email..."放 Line2)。只有当文字过长放不进卡片时,才可删掉无信息量的客套话;禁止为了排版删掉有意义内容。
+   - **When a long email exceeds the card capacity, TRIMMING IS REQUIRED (not optional).** The poster must always display COMPLETELY within the 1080×1440 canvas — never let text overflow or get cut off. Priority order when trimming:
+     1. Keep the decision-relevant sentences (highlight box) — these are the core.
+     2. Keep a SHORT version of the opening (Line2) — compress it to one sentence if needed.
+     3. Keep the closing/signature.
+     4. Compress or drop long background explanations, expanded arguments, and redundant detail — keep the gist, not the full text.
+   - 邮件过长放不下时必须取舍(不是可选):海报必须完整显示在 1080×1440 画布内,禁止文字溢出/截断。取舍优先级:①红框核心决策句 ②开头压缩成一句(Line2)③落款 ④压缩或删掉冗长的背景展开论述(保留大意即可)。
 8. Replace every personal or sensitive value with a subtle gray-white pixelated mosaic strip. Never use placeholder text. Cover student, professor, third-party names, email addresses, phone numbers, IDs, application numbers, account details, signatures, and other identifying data.
    - Also mosaic the student's specific research-proposal topic or exact research direction.
    - Mosaic the professor's specific research direction, named theory/model, project, grant, lab, centre, programme, dataset, or distinctive topic. Broad discipline descriptions may remain.
