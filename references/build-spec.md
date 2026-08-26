@@ -111,11 +111,12 @@
 | Mosaic1 | 填充 | `#C7C7C7`(灰白马赛克,不含任何文字) |
 | Comma | 文本 | `,` 34px,#333333 |
 
-### Line2(前文,可选)
+### Line2(前文,**默认保留**)
 | 属性 | 值 |
 |---|---|
-| 文本 | 【可替换】如 `Thank you very much for your interest to study at UQ, and to work with me.` |
+| 文本 | 【可替换】邮件开头段落(问候/感谢/兴趣表达),如 `Thank you very much for your interest to study at UQ, and to work with me.` |
 | 字号 | 34px,Regular,#333333 |
+| 规则 | **默认必须保留**邮件正文里有意义的段落(如 "Thank you for your email...")。只有当全部文字过长、放不进卡片时,才删无信息量的客套话;禁止为排版删有意义内容 |
 
 ### HighlightBox(红框关键句组)
 | 节点 | 属性 | 值 |
