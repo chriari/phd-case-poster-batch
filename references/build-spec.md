@@ -174,7 +174,8 @@
 - 卡片 ContentCard 在 Hero **之后**创建 → z 在 Hero 之上 → 会盖住 Hero 底部(y≥470 区域)。
 - **SchoolChip 必须保证 z 在 ContentCard 之上**(否则卡片会遮住学校胶囊)。
 - 推荐做法:SchoolChip 先建在 Hero 内,卡片建完后,把 SchoolChip **移动到海报 Frame 顶层、index 排在 ContentCard 之后**(Move 操作,parent 设为海报 Frame),确保胶囊永远在卡片上面。
-- 建完后务必 `capture_screenshot` 检查一次:如果胶囊被卡片切掉,就是 z 顺序问题,调整 index 即可。
+- **⚠️ Move 之后必须立刻显式重设 SchoolChip 坐标 `x=72, y=324`**(U 操作)。Move 到顶层后 Ardot 可能保留错误的局部 y(实测出现过 y 残留 166,导致胶囊叠在 Hero 标题上、看起来"跑到 Hero 上面")。x=72/y=324 是 Hero 底部的标准落点,每次 M 完都要重设一次,不要假设位置会保留。
+- 建完后务必导出/capture 检查一次:如果胶囊叠在标题附近=y 残留,重设 y=324;如果被卡片切掉,就是 z 顺序问题,调整 index 即可。
 
 ---
 
