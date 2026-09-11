@@ -36,11 +36,14 @@ Before doing anything, briefly explain to the user how this run will work, in pl
 
 1. Record the exact filename, including capitalization, punctuation, spaces, Chinese characters, and extension. Never rename it.
 2. Inspect and transcribe only visible screenshot content. Use the filename only as a hint and output identifier.
+   - **Same thread split across multiple screenshots** (e.g. `Xxx University.png` + `Xxx University2.png`, or a first message inviting a meeting plus a later message confirming the time/room): merge them into **one** poster for that student+school — combine the earlier invitation and the later confirmation so the poster shows the complete outcome. Name the merged output after the first screenshot's filename. Tell the user in the report which files were merged.
+   - **User annotations inside a filename** (e.g. `陈佳昕Universitat Pompeu Fabra（不是面试不要搞错）.jpg`) are instructions to the assistant, not part of the real name — drop the bracketed note from the output filename, keep the rest exact, and state this in the report.
 3. Resolve conflicts in favor of the screenshot: school, country/region, content type, and facts visible in the screenshot override the filename and user-supplied labels.
 4. Classify before choosing a template:
    - formal admission or conditional/unconditional offer → blue Offer;
    - explicit interview, meeting, Zoom, Teams, or further-conversation invitation → purple interview;
    - ordinary reply, material request, process guidance, research/funding discussion, or supervision possibility without a meeting invitation → green outreach reply.
+   - **Conditional / future-tense meetings are NOT interview invitations.** If the professor only says a meeting may happen *after* a prerequisite (e.g. "Before deciding whether to support your candidacy, I would kindly ask you to provide a writing sample. **After that, we can arrange an online meeting.**" or "After that, we can arrange a short meeting with Dr X to discuss the next steps"), this is a **green ordinary reply** — the meeting is not yet agreed. Purple requires a real invitation: a proposed/confirmed time slot, a requested availability, or a stated willingness to meet ("I would be happy to meet with you", "let's find a time", "Are you free on ...?"). When in doubt, ask the user — a wrongly-purple poster misrepresents the case.
    - When multiple classes are explicit, use Offer > interview > ordinary reply.
 5. Identify the school from screenshot evidence. Verify the latest public ranking immediately before generation:
    - United States: latest U.S. News Best Global Universities rank; label `学校中文名｜USNEWS数字`.
