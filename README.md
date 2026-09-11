@@ -54,6 +54,23 @@ git clone https://github.com/chriari/phd-case-poster-batch.git \
 ## 设计规范
 
 版式、配色、字体、水印、打码、红框的完整参数见 [references/template-rules.md](references/template-rules.md)(2026-08 年轻互联网版)。
+逐节点施工图(含校名胶囊宽度上限)见 [references/build-spec.md](references/build-spec.md)。
+
+### 新建批次的施工要点(实测最快最稳的做法)
+
+1. **每张海报 2 次 `batch_edit`**:Ardot 的 binding 只在同一次调用内有效,所以
+   - 第 1 次:建 10 个结构节点(海报 Frame → Hero → RegionRow/RegionDot/RegionText/PosterTitle/SchoolChip/ChipDot/SchoolText → ContentCard),**从返回结果里读真实 id**;
+   - 第 2 次:用上一步的字面 id 建卡片内容(DearRow/Line2/HighlightBox/HL1/HL2/Line3/Line4/SigRow)+ 4 个水印 + Slogan。
+   15 张 ≈ 30 次调用。给每张 frame 设不同的 `x`(0 / 1160 / 2320 / …)避免"节点重叠"警告。
+2. **SchoolChip 不用 Move**,直接作为 Hero 第 3 个子节点建(几何上永远不和卡片相交,详见 build-spec 第六节)。
+3. ⚠️ **插子节点时父 id 千万别写错**——实测把 ContentCard 的 id 写成了相邻的 SchoolText id,红框/落款全插进了文本节点,Ardot 报 `width="fill_container" requires the parent to use auto-layout`。看到这个报错就是插错父节点了:把插错的节点 `D` 掉重插即可。
+4. **卡片高度统一放到最后一步**:先按预估字号建完(高度用 `hug_contents`),全部量完再一次性把 15 个 ContentCard `U` 成同一个固定值(本批 = 870)。这样只需一轮校准。
+5. **校名胶囊会溢出**:可用宽度只有 936,胶囊右边界必须 ≤ 1008;长校名(如 `加州大学圣塔芭芭拉分校｜USNEWS100`)要把该张 SchoolText 降到 42~48px。
+6. **导出后跑一遍脚本校验**(比逐张截图便宜):
+   - 扫 `x=540` 从 y=1250 向下找第一个非白行 → 应 ≈ **1339/1340**(卡片底边对齐);
+   - 扫 y=330~415,每行从右往左找第一个白色像素取最大 x → 应 **≤ 1008**(胶囊没溢出);
+   - 缩略图拼成一张对照图目视整体一致性;
+   - Ardot 导出的 PNG 是 **P 模式(调色板)+ 透明**,必须先 `convert("RGB")` 再保存;源图是 `.jpg` 的用 JPEG(q95)保存。
 
 ---
 

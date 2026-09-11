@@ -9,8 +9,10 @@
 
 - 每次批次**新建一个 Ardot 设计文件**,不要复用出现渲染问题的旧文件
 - **每张海报用 Insert(I) 从零构建**,严禁 Copy 样板 frame(会导致渲染内容互相串,数据对但渲染错)
-- 构建顺序:顶层 frame → Hero → 地区行 → 大标题 → 学校胶囊(临时)→ 正文卡片 → **学校胶囊(正式,在卡片 z 之后)** → 水印 → slogan
-- ⚠️ **学校胶囊必须 z 顺序在 ContentCard 之上**——否则卡片会盖住胶囊。推荐做法:先把 SchoolChip 临时插入 Hero 内构建,等 ContentCard 完成后,用 `M` 把 SchoolChip 移动到 demo 顶层且 index 在 ContentCard 之后(确保 z 在 Card 之上)。在导出前用 `capture_screenshot` 校验一遍,如果发现胶囊被遮,立刻调整 z 顺序。
+- 构建顺序:顶层 frame → Hero → 地区行 → 大标题 → 学校胶囊(第 3 个子节点,建在 Hero 内即可,无需 Move)→ 正文卡片 → 水印 → slogan
+- ⚠️ **学校胶囊不需要 Move**:胶囊在 Hero 里的位置是 y 324~423,卡片顶边 470,两者永不相交,所以卡片不会遮住胶囊。直接建在 Hero 内就行,省掉 M+U(x=72,y=324) 那套(也避开了 y 残留 166 的老 bug)。详见 build-spec 第六节。
+- ⚠️ **校名胶囊宽度上限**:Hero 可用宽 936,胶囊右边界必须 ≤ 1008。长校名(如 `加州大学圣塔芭芭拉分校｜USNEWS100`)会把 52px 的胶囊撑到 1111 宽被裁掉,需把该张 SchoolText 降到 42~48px。安全参考:≤10 汉字 + 排名用 52px 没问题。详见 build-spec「六之二」。
+- ⚠️ **每张海报分 2 次 batch_edit**:第一次建结构拿真实 id,第二次用字面 id 建卡片内容(Ardot binding 只在同一次调用内有效)。
 - 全部建完后再导出:export_nodes scale=1 得 1080×1440 PNG
 - 校验:像素对比同内容参照差异应 <5%,不同内容参照差异应 >8%(如昆士兰 vs 样板 ≈1.5%,vs Heriot ≈10%)
 - `.jpg` 原文件:导出 PNG 后需用 PIL 转成真 JPEG,禁止把 PNG 字节存成 .jpg
