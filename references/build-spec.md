@@ -84,6 +84,7 @@
 | ChipDot | 形状 | 圆形 **22×22**,亮黄 **#FFC53D** |
 | SchoolText | 文本 | 【可替换】`墨尔本大学｜QS19` |
 | SchoolText | 字号/字体 | **52px**,`Sarasa Gothic SC` Bold,**#0B4A38** |
+| SchoolText | ⚠️ 翻译规则 | 英文校名**必须整段译成中文**,包括跟在后面的州/省/城市名。`Queen's University, Ontario` → `女王大学(安大略)`,**不能只写「女王大学」或写成「女王大学 Ontario」**;`University of California, Berkeley` → `加州大学伯克利分校`。 |
 
 【可替换·紫色学校文字色】`#5035A8`
 【可替换·蓝色学校文字色】`#14406E`

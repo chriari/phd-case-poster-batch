@@ -50,17 +50,21 @@ Before doing anything, briefly explain to the user how this run will work, in pl
    - Other countries/regions: latest QS World University Rankings; label `学校中文名｜QS数字`.
    - Show the ranking only when the numeric rank is 200 or better. If the rank is greater than 200, or the entire published ranking band begins after 200, show only the Chinese school name.
    - Do not include ranking year, “世界大学排名”, or “第”.
+   - **Translate the school name COMPLETELY — including any place name attached to it.** An English school name whose trailing part is a state/province/city must be translated too, not left in English. E.g. `Queen's University, Ontario` → `女王大学(安大略)` (NOT `女王大学`), `University of California, Berkeley` → `加州大学伯克利分校`. Never output a half-translated label like `女王大学 Ontario`.
    - For Sino-foreign joint-venture universities, use `中外合办-PHD` as the title region; do not use `中国-PHD`.
 6. Generate a branded poster on the Ardot canvas following the layout, color, type, watermark, and mosaic rules in [references/template-rules.md](references/template-rules.md). Use the type/color mapping (green/purple/blue) from the classification. Then export the poster frame as PNG.
    - **The content bubble (ContentCard) height is a FIXED 877px — never `hug_contents`.** A short email must NOT shrink the bubble; the extra space simply stays blank at the bottom. This keeps every poster visually consistent (bubble bottom always at y=1347, constant gap to the bottom slogan). Reference poster: 李晨瑞-MSU. If you notice an already-built poster whose bubble is shorter than 877, fix it by setting the ContentCard height to 877 and re-exporting.
 7. Preserve the exact source meaning. Do not invent missing text, dates, interview schedules, admissions, funding, or supervision commitments.
    - **Keep every meaningful email paragraph by default.** Greetings, thanks, interest expressions, and context sentences MUST stay in the poster (e.g. a "Thank you for your email..." opening goes into Line2 before the highlight box). Only when the text is so long it would overflow the content card may generic filler (pure courtesy phrases without information) be trimmed — never delete meaningful content to make it fit.
-   - **When a long email exceeds the card capacity, TRIMMING IS REQUIRED (not optional).** The poster must always display COMPLETELY within the 1080×1440 canvas — never let text overflow or get cut off. Priority order when trimming:
-     1. Keep the decision-relevant sentences (highlight box) — these are the core.
-     2. Keep a SHORT version of the opening (Line2) — compress it to one sentence if needed.
-     3. Keep the closing/signature.
-     4. Compress or drop long background explanations, expanded arguments, and redundant detail — keep the gist, not the full text.
-   - 邮件过长放不下时必须取舍(不是可选):海报必须完整显示在 1080×1440 画布内,禁止文字溢出/截断。取舍优先级:①红框核心决策句 ②开头压缩成一句(Line2)③落款 ④压缩或删掉冗长的背景展开论述(保留大意即可)。
+   - **When a long email exceeds the card capacity, fix the FIT — never let text overflow or get cut off.** The poster must always display COMPLETELY within the 1080×1440 canvas, and the bubble never grows past its fixed 877 height. Symptom of the failure mode to avoid: the card gets stuffed with everything, grows past the canvas, and the signature mosaic ends up colliding with the bottom watermark / slogan. Remedy order (IMPORTANT — user-confirmed):
+     1. **Shrink the body type size first.** Reduce every body text node in the card (DearText/Comma/Line2/HL1/HL2/Line4 — never the hero title or the school chip) from 34px down in 2px steps (32 → 30 → 28) and, if needed, tighten the card's `itemSpacing` (22 → 20). **Do not delete any content in this step.** Re-measure the card's natural height with `capture_layout` (keep `hug_contents` while measuring) and stop as soon as it fits within 877 — then set the height back to fixed 877.
+     2. **Deleting content is a LAST RESORT and REQUIRES ASKING THE USER FIRST.** If even the smallest acceptable size cannot fit the text, do NOT silently cut paragraphs — tell the user the poster is over-length, show which sentence(s) you propose to drop, and wait for approval. Never trim meaningful email content on your own initiative.
+     3. The poster must always display COMPLETELY — if the user does approve trimming, use this priority order:
+        - Keep the decision-relevant sentences (highlight box) — these are the core.
+        - Keep a SHORT version of the opening (Line2) — compress it to one sentence if needed.
+        - Keep the closing/signature.
+        - Compress or drop long background explanations, expanded arguments, and redundant detail — keep the gist, not the full text.
+   - 邮件过长放不下时:**优先把正文字号调小**(34→32→30→28,可同时把卡片 itemSpacing 22→20),保证全部内容都放进固定的 877 卡片里、不溢出画布——这一步**不删任何内容**。只有当字号缩到可接受的最小值仍放不下时,才**先问用户能不能删哪一句**,得到确认后再删;严禁自己动手删有意义的段落。失败信号(必须避免):为了"全塞下"把卡片撑到超出画布,落款马赛克和底部水印/slogan 撞在一起。
 8. Replace every personal or sensitive value with a subtle gray-white pixelated mosaic strip. Never use placeholder text. Cover student, professor, third-party names, email addresses, phone numbers, IDs, application numbers, account details, signatures, and other identifying data.
    - Also mosaic the student's specific research-proposal topic or exact research direction.
    - Mosaic the professor's specific research direction, named theory/model, project, grant, lab, centre, programme, dataset, or distinctive topic. Broad discipline descriptions may remain.
