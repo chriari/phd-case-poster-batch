@@ -94,10 +94,14 @@ git clone https://github.com/chriari/phd-case-poster-batch.git \
   2. 缩到最小仍放不下 → **先问用户能不能删哪一句**,列出建议删的句子等确认。**严禁自己删有意义的段落。**
 - 只调正文(DearText / Line2 / HL1 / HL2 / Line3 / Line4),**不动大标题(110~116px)和学校胶囊(52px)**。
 
-### 0.4 非截图输入:PDF 录取信(Offer)
-- 输入偶尔不是截图而是 **PDF 录取信**(如 `吴钺otago.pdf`)。处理:`pymupdf` 抽文本 + 渲染成图自己读,判定为 **蓝色 Offer 模板**(`博士OFFER来啦!`)。
-- Offer 信通常**没有称呼语**(直接 "Congratulations! …"),这时**不要硬造 DearRow**,正文直接从 `Line2` 开始;红框里放**录取项目 / 开学日期 / 学制 / 学费**这些硬信息,`Line4` 用信里的落款语(如 `Yours sincerely,`)+ 签名马赛克。
-- 输出文件名 = 原 PDF 名把扩展名换成 `.png`(如 `吴钺otago.pdf` → `吴钺otago.png`),原 PDF 一样保留不动。
+### 0.4 非截图输入:PDF 录取信(Offer)——**不要改写成文字,直接放第一页截图**
+- 反面案例:9-16 批次把 `吴钺otago.pdf` 的录取信息**改写并中译**成卡片文字("Doctor of Philosophy(2027, Dunedin)"、"学制 3 年"、"开学日期 1 March 2027"…),用户要求改回原文。**录取信/Offer 的正文一个字都不要改写、不要翻译。**
+- 正确做法(模板不变,仍是蓝色 `博士OFFER来啦!`):
+  1. `pymupdf` 把**第 1 页按 300dpi 渲染成图**,裁掉四周空白边距(校徽可以单独裁成一条放在正文上方,看起来更像正式录取信);
+  2. **打码**:录取信常常**没有称呼语、第一页也没有姓名/学号** —— 真的没有个人信息就**不要硬造马赛克**,在报告里说明即可;正文里的**字面 URL 一律打码**(沿用"链接必打码"规则);
+  3. 走 `register_assets` → `curl -X PUT '<uploadUrl>'` → `upload_images`(传配对的 `downloadUrl`),把图铺到 ContentCard 里一个 frame 上;
+  4. **尺寸**:卡片内区 840×774,竖版页面按高度适配 ≈ **592×774**;把 ContentCard 设成 `counterAxisAlignItems:"CENTER"` + `primaryAxisAlignItems:"CENTER"` 让它居中;
+  5. 输出名 = 原 PDF 名换成 `.png`(如 `吴钺otago.pdf` → `吴钺otago.png`),原 PDF 保留不动。
 
 ### 0.5 一张截图 = 一张海报(默认不合并)
 - **用户明确口径(2026-09-16)**:收件箱里每张截图都要出**自己的一张**海报。`Xxx University.png` + `Xxx University2.png` → **两张**海报,输出名和输入名一一对应。

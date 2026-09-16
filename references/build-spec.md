@@ -224,9 +224,13 @@ mx = max(x for y in range(330, 416) for x in range(1079, 0, -1)
 
 保存图片时:Ardot 导出的 PNG 可能是 **P 模式(调色板)+ 透明**,必须先 `convert("RGB")`(带 alpha 的先贴白底);源图是 `.jpg` 的用 **JPEG(quality=95, subsampling=0)** 保存,禁止把 PNG 字节存成 `.jpg`。
 
-### 七之二、Offer(蓝色)模板
+### 七之二、Offer(蓝色)模板:录取信直接放原页截图
 
 - `博士OFFER来啦!` + 蓝色渐变(见第一、二节蓝色值)。
-- Offer 信/录取 PDF 常常**没有称呼语** → 省略 `DearRow`,正文从 `Line2` 开始。
-- 红框(HighlightBox)放硬信息:录取项目 / 开学日期 / 学制 / 学费;`Line4` 用信里的落款语 + 签名马赛克。
+- ⚠️ **录取信/Offer 的正文禁止改写、禁止翻译**,也不要塞进红框里当手打文字。做法是把**第 1 页截图**放进 ContentCard:
+  1. `pymupdf` 300dpi 渲染第 1 页 → PIL 裁掉四周空白 → (可选)把校徽裁成一条放在正文上方;
+  2. 打码:字面 URL 一律盖灰块 `#C7C7C7`;第一页若确实没有姓名/学号/邮箱/电话,就不要造假马赛克,在报告里说明;
+  3. `register_assets`(image/png)→ `curl -X PUT '<uploadUrl>' -H 'Content-Type: image/png' --data-binary '@file'` → `upload_images` 传配对 `downloadUrl`;
+  4. 图片 frame:卡片内区 840×774,**竖版页面按高度适配 = 592×774**;ContentCard 设 `counterAxisAlignItems:"CENTER"` + `primaryAxisAlignItems:"CENTER"` 让它居中;frame 加 1px 浅色描边 + `cornerRadius 6`;
+  5. 用 `D()` 删掉卡片里原有的 Line2/HighlightBox/Line3/Line4/SigRow 文本节点。
 - 输入是 PDF 时:输出名 = 原 PDF 名换成 `.png`,原 PDF 保留不动。
