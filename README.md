@@ -139,10 +139,15 @@ git clone https://github.com/chriari/phd-case-poster-batch.git \
 - 输出文件名与源图**一字不差**(含大小写/空格/中文/扩展名),不重命名。
 
 ### 4. 排名核实
-- 每次生成前**联网核实最新排名**:美校用 U.S. News,其他地区用 QS。
-- 排名 >200 或整榜都超 200 时,只写学校中文名,不写排名。
+- 每次生成前**联网核实最新排名**:美校用 U.S. News,其他地区用 QS。**必须核对"最新一版"**,两个榜都是每年 6 月更新:
+  - QS World University Rankings(2027 版 → 2026-06-18 发布)
+  - U.S. News Best Global Universities(2026-2027 版 → 2026-06-15 发布)
+- ⚠️ **踩过的坑**:2026-09-16 批次把卡内基梅隆大学写成 `USNEWS126`(**上一版**的数字),最新一版是 **112**。网上大量聚合站(中介页、百科)仍在引旧版,所以**优先看官网校页的数字** `usnews.com/education/best-global-universities/<校名>`,或找当年发布的完整榜单。
+  - 常用锚点(实测):2026-2027 US News — CMU 112、UPenn 17、UCSB 100、UCI 99、UCSD 23、UMN 76、伯克利 7、UCLA 11;QS 2027 — UCL 8、Monash 31、CityU 52、UWA 77、Adelaide University 79、Durham 85、QMUL 103、RMIT 119、Curtin 189、Otago 198、Massey 215、HKBU 216、Macau 266、Nankai 329、Kent 415。
+- 排名 >200 时只写学校中文名,不写排名。**留空 ≠ 漏写**:雪城大学(483)、布法罗大学(369)、香港浸会大学(216)、梅西大学(215)、澳门大学(266)、南开大学(329)、肯特大学(415)按口径就该留空。要改阈值先问用户。
 - 不写年份、"世界大学排名"、"第"。
 - 中外合办院校地区标签用 `中外合办-PHD`,禁止用 `中国-PHD`。
+- **检查既有批次**时,一次性把每张胶囊的 `SchoolText` 拉出来对照(用 `batch_read` 的 `patterns:[{name:"SchoolText"}]`),比逐张截图快得多。
 
 ### 5. 隐私与打码
 - 姓名、邮箱、电话、ID、申请号、签名等 → 灰白圆角马赛克块(不留任何文字残留,不写"姓名已隐藏"等占位文字)
