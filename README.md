@@ -143,9 +143,10 @@ git clone https://github.com/chriari/phd-case-poster-batch.git \
   - **美国学校 → U.S. News Best National Universities(美国国内综合大学排名)**,标签 `学校中文名｜USNEWS数字`。**不要用 Best Global Universities**(用户 2026-09-21 拍板;美校国内名次天然比世界名次好看很多,别拿世界榜去"纠错")。该榜**每年 9 月换版**(2027 版 = 2026-09-22 发布),每批先确认当前是哪一版。
     - 2026 版实测锚点:宾夕法尼亚大学 7、卡内基梅隆 20、加州伯克利 15、UCLA 17、UCSD 29、UCI 32、UCSB 40、明尼苏达双城 59、密歇根州立 64、雪城大学 75、布法罗大学 75。
   - **非美校 → QS World University Rankings**,标签 `学校中文名｜QS数字`。每年 6 月发新版(2027 版 = 2026-06-18)。
-    - QS 2027 实测锚点:UCL 8、Monash 31、CityU 52、UWA 77、Adelaide University 79、Durham 85、QMUL 103、RMIT 119、Curtin 189、Otago 198、Massey 215、HKBU 216、Macau 266、Nankai 329、Kent 415。
+    - QS 2027 实测锚点:UCL 8、Monash 31、CityU 52、UWA 77、Adelaide University 79、Durham 85、QMUL 103、RMIT 119、Curtin 189、Otago 198、Massey 215、HKBU 216、Macau 267、Nankai 329、Kent 415。
+    - ⚠️ 香港/澳门名次**同年内可能被二次修订**(实测:澳门大学官方 267,不少聚合站写 266)。以 `topuniversities.com` 校页或官方新闻稿为准。
 - ⚠️ **踩过的坑**:2026-09-16 批次把卡内基梅隆写成 `USNEWS126`(旧版世界榜数字),还漏了雪城/布法罗(它们世界榜 482/369,但**国内榜是 75**)。聚合站(中介页、百科)普遍在引旧版/错版,优先看官网校页。
-- 排名 >200 时只写学校中文名,不写排名。**留空 ≠ 漏写**:香港浸会大学(QS216)、梅西大学(QS215)、澳门大学(QS266)、南开大学(QS329)、肯特大学(QS415)按口径就该留空。要改阈值先问用户。
+- 排名 >200 时只写学校中文名,不写排名。**留空 ≠ 漏写**:香港浸会大学(QS216)、梅西大学(QS215)、澳门大学(QS267)、南开大学(QS329)、肯特大学(QS415)按口径就该留空。要改阈值先问用户。
 - 不写年份、"世界大学排名"、"第"。
 - 中外合办院校地区标签用 `中外合办-PHD`,禁止用 `中国-PHD`。
 - **检查既有批次**时,一次性把每张胶囊的 `SchoolText` 拉出来对照(用 `batch_read` 的 `patterns:[{name:"SchoolText"}]`),比逐张截图快得多。
